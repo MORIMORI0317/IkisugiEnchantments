@@ -1,0 +1,56 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 20/01/19 22:40
+Description: Exception in server tick loop
+
+java.lang.NullPointerException: Exception in server tick loop
+	at orz.teamfelnull.mineguns.client.handler.ClientHandler.onTick(ClientHandler.java:20) ~[main/:?] {re:classloading}
+	at net.minecraftforge.eventbus.ASMEventHandler_0_ClientHandler_onTick_ServerTickEvent.invoke(.dynamic) ~[?:?] {}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:80) ~[eventbus-2.0.0-milestone.1-service.jar:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:258) ~[eventbus-2.0.0-milestone.1-service.jar:?] {}
+	at net.minecraftforge.fml.hooks.BasicEventHooks.onPreServerTick(BasicEventHooks.java:114) ~[?:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:810) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:658) [?:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.15.1
+	Minecraft Version ID: 1.15.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 676184496 bytes (644 MB) / 2130182144 bytes (2031 MB) up to 3803185152 bytes (3627 MB)
+	CPUs: 12
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 5.0.0-milestone.4+67+b1a340b
+	ModLauncher launch target: fmluserdevclient
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/eventbus-2.0.0-milestone.1-service.jar eventbus PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar runtime_enum_extender PLUGINSERVICE 
+		/accesstransformers-2.0.0-milestone.1-shadowed.jar accesstransformer PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar capability_inject_definalize PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar runtimedistcleaner PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar fml TRANSFORMATIONSERVICE 
+	FML: 30.0
+	Forge: net.minecraftforge:30.0.41
+	FML Language Providers: 
+		javafml@30.0
+		minecraft@1
+	Mod List: 
+		client-extra.jar Minecraft {minecraft@1.15.1 DONE}
+		main Mine Guns {mineguns@1.0 DONE}
+		forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-recomp.jar Forge {forge@30.0.41 DONE}
+		jei-1.15.1-6.0.0.1_mapped_snapshot_20190719-1.14.3.jar Just Enough Items {jei@6.0.0.1 DONE}
+	Player Count: 0 / 8; []
+	Data Packs: vanilla, mod:forge (incompatible), mod:jei (incompatible), mod:mineguns
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'

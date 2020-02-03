@@ -1,0 +1,113 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 20/01/19 22:06
+Description: Sending packet
+
+java.lang.NullPointerException: Sending packet
+	at net.minecraft.network.ProtocolType.getFromPacket(ProtocolType.java:201) ~[?:?] {re:classloading}
+	at net.minecraft.network.NetworkManager.dispatchPacket(NetworkManager.java:184) ~[?:?] {re:classloading}
+	at net.minecraft.network.NetworkManager.sendPacket(NetworkManager.java:172) ~[?:?] {re:classloading}
+	at net.minecraft.network.play.ServerPlayNetHandler.sendPacket(ServerPlayNetHandler.java:964) ~[?:?] {re:classloading}
+	at net.minecraft.network.play.ServerPlayNetHandler.sendPacket(ServerPlayNetHandler.java:947) ~[?:?] {re:classloading}
+	at net.minecraft.world.TrackedEntity.sendSpawnPackets(TrackedEntity.java:205) ~[?:?] {re:classloading}
+	at net.minecraft.world.TrackedEntity.track(TrackedEntity.java:192) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ChunkManager$EntityTracker.updateTrackingState(ChunkManager.java:1140) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ChunkManager.sendChunkData(ChunkManager.java:1034) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ChunkManager.setChunkLoadedAtClient(ChunkManager.java:725) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ChunkManager.setPlayerTracking(ChunkManager.java:825) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ChunkManager.track(ChunkManager.java:945) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ServerChunkProvider.track(ServerChunkProvider.java:450) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.server.ServerWorld.onEntityAdded(ServerWorld.java:1012) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.addPlayer(ServerWorld.java:908) ~[?:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.addNewPlayer(ServerWorld.java:885) ~[?:?] {re:classloading}
+	at net.minecraft.server.management.PlayerList.initializeConnectionToPlayer(PlayerList.java:167) ~[?:?] {re:classloading}
+	at net.minecraft.network.login.ServerLoginNetHandler.tryAcceptPlayer(ServerLoginNetHandler.java:119) ~[?:?] {re:classloading}
+	at net.minecraft.network.login.ServerLoginNetHandler.tick(ServerLoginNetHandler.java:63) ~[?:?] {re:classloading}
+	at net.minecraft.network.NetworkManager.tick(NetworkManager.java:241) ~[?:?] {re:classloading}
+	at net.minecraft.network.NetworkSystem.tick(NetworkSystem.java:148) ~[?:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:894) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:812) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:658) [?:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.minecraft.network.ProtocolType.getFromPacket(ProtocolType.java:201)
+	at net.minecraft.network.NetworkManager.dispatchPacket(NetworkManager.java:184)
+	at net.minecraft.network.NetworkManager.sendPacket(NetworkManager.java:172)
+
+-- Packet being sent --
+Details:
+	Packet class: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.network.play.ServerPlayNetHandler.sendPacket(ServerPlayNetHandler.java:964)
+	at net.minecraft.network.play.ServerPlayNetHandler.sendPacket(ServerPlayNetHandler.java:947)
+	at net.minecraft.world.TrackedEntity.sendSpawnPackets(TrackedEntity.java:205)
+	at net.minecraft.world.TrackedEntity.track(TrackedEntity.java:192)
+	at net.minecraft.world.server.ChunkManager$EntityTracker.updateTrackingState(ChunkManager.java:1140)
+	at net.minecraft.world.server.ChunkManager.sendChunkData(ChunkManager.java:1034)
+	at net.minecraft.world.server.ChunkManager.setChunkLoadedAtClient(ChunkManager.java:725)
+	at net.minecraft.world.server.ChunkManager.setPlayerTracking(ChunkManager.java:825)
+	at net.minecraft.world.server.ChunkManager.track(ChunkManager.java:945)
+	at net.minecraft.world.server.ServerChunkProvider.track(ServerChunkProvider.java:450)
+	at net.minecraft.world.server.ServerWorld.onEntityAdded(ServerWorld.java:1012)
+	at net.minecraft.world.server.ServerWorld.addPlayer(ServerWorld.java:908)
+	at net.minecraft.world.server.ServerWorld.addNewPlayer(ServerWorld.java:885)
+	at net.minecraft.server.management.PlayerList.initializeConnectionToPlayer(PlayerList.java:167)
+	at net.minecraft.network.login.ServerLoginNetHandler.tryAcceptPlayer(ServerLoginNetHandler.java:119)
+	at net.minecraft.network.login.ServerLoginNetHandler.tick(ServerLoginNetHandler.java:63)
+	at net.minecraft.network.NetworkManager.tick(NetworkManager.java:241)
+
+-- Ticking connection --
+Details:
+	Connection: net.minecraft.network.NetworkManager@1916c1b6
+Stacktrace:
+	at net.minecraft.network.NetworkSystem.tick(NetworkSystem.java:148)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:894)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:812)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:658)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.15.1
+	Minecraft Version ID: 1.15.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 941169584 bytes (897 MB) / 2052587520 bytes (1957 MB) up to 3803185152 bytes (3627 MB)
+	CPUs: 12
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 5.0.0-milestone.4+67+b1a340b
+	ModLauncher launch target: fmluserdevclient
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/eventbus-2.0.0-milestone.1-service.jar eventbus PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar runtime_enum_extender PLUGINSERVICE 
+		/accesstransformers-2.0.0-milestone.1-shadowed.jar accesstransformer PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar capability_inject_definalize PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar runtimedistcleaner PLUGINSERVICE 
+		/forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-launcher.jar fml TRANSFORMATIONSERVICE 
+	FML: 30.0
+	Forge: net.minecraftforge:30.0.41
+	FML Language Providers: 
+		javafml@30.0
+		minecraft@1
+	Mod List: 
+		client-extra.jar Minecraft {minecraft@1.15.1 DONE}
+		main Mine Guns {mineguns@1.0 DONE}
+		forge-1.15.1-30.0.41_mapped_snapshot_20190719-1.14.3-recomp.jar Forge {forge@30.0.41 DONE}
+		jei-1.15.1-6.0.0.1_mapped_snapshot_20190719-1.14.3.jar Just Enough Items {jei@6.0.0.1 DONE}
+	Player Count: 1 / 8; [ServerPlayerEntity['Dev'/225, l='新規ワールド', x=-293.96, y=7.00, z=39.57]]
+	Data Packs: vanilla, mod:forge (incompatible), mod:jei (incompatible), mod:mineguns
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'
