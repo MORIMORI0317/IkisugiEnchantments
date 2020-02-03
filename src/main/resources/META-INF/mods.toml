@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[30,)" 
+issueTrackerURL="http://my.issue.tracker/"
+[[mods]]
+modId="ikisugienchantments"
+version="1.0" 
+displayName="Ikisugi Enchantments" 
+updateJSONURL="http://myurl.me/" 
+displayURL="" 
+logoFile="null.png" 
+credits="" 
+authors="MORIMORI0317" 
+description='''This is Ikisugi Enchantments MOD'''
