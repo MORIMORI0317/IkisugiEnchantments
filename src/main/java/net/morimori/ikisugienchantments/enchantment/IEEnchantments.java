@@ -54,6 +54,7 @@ public class IEEnchantments {
 	public static Enchantment BAD_EFFECT_CLEAR = new BadEffectClearEnchantment(Enchantment.Rarity.VERY_RARE,
 			EquipmentSlotType.MAINHAND);
 
+
 	public static void registerEnchantment(IForgeRegistry<Enchantment> r) {
 		r.register(SLOWDOWN.setRegistryName(IkisugiEnchant.MODID, "slowdown"));
 		r.register(GLOW.setRegistryName(IkisugiEnchant.MODID, "glow"));
