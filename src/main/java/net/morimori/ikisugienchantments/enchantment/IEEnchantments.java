@@ -6,6 +6,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.morimori.ikisugienchantments.IkisugiEnchant;
+import net.morimori.ikisugienchantments.config.CommonConfig;
 
 public class IEEnchantments {
 	public static Enchantment SLOWDOWN = new AttackPotionEnchantment(Enchantment.Rarity.COMMON, Effects.SLOWNESS, 1, 11,
@@ -41,6 +42,12 @@ public class IEEnchantments {
 	public static Enchantment BENEFICIAL_EFFECT_CLEAR = new BeneficialEffectClearEnchantment(
 			Enchantment.Rarity.VERY_RARE, EquipmentSlotType.MAINHAND);
 
+	public static Enchantment EXPLOSION = new ExplosionEnchantment(
+			Enchantment.Rarity.VERY_RARE, EquipmentSlotType.MAINHAND);
+
+	public static Enchantment IKISUGILK_TOUCH = new IkisugilkTouchEnchantment(Enchantment.Rarity.VERY_RARE,
+			EquipmentSlotType.MAINHAND);
+
 	//cures
 	public static Enchantment DULLNESS = new DullnessEnchantment(Enchantment.Rarity.UNCOMMON,
 			EquipmentSlotType.MAINHAND);
@@ -55,22 +62,26 @@ public class IEEnchantments {
 			EquipmentSlotType.MAINHAND);
 
 	public static void registerEnchantment(IForgeRegistry<Enchantment> r) {
-		r.register(SLOWDOWN.setRegistryName(IkisugiEnchant.MODID, "slowdown"));
-		r.register(GLOW.setRegistryName(IkisugiEnchant.MODID, "glow"));
-		r.register(TOXICITY.setRegistryName(IkisugiEnchant.MODID, "toxicity"));
-		r.register(WEAKNESS.setRegistryName(IkisugiEnchant.MODID, "weakness"));
-		r.register(WEAKENING.setRegistryName(IkisugiEnchant.MODID, "weakening"));
-		r.register(FLOATING.setRegistryName(IkisugiEnchant.MODID, "floating"));
-		r.register(TREATMENT.setRegistryName(IkisugiEnchant.MODID, "treatment"));
-		r.register(ILLAGER_KILLER.setRegistryName(IkisugiEnchant.MODID, "illager_killer"));
-		r.register(SHIPMENT.setRegistryName(IkisugiEnchant.MODID, "shipment"));
-		r.register(DISARMAMENT.setRegistryName(IkisugiEnchant.MODID, "disarmament"));
-		r.register(DULLNESS.setRegistryName(IkisugiEnchant.MODID, "dullness"));
-		r.register(NO_DAMAGE.setRegistryName(IkisugiEnchant.MODID, "no_damage"));
-		r.register(FIRE_SUPPRESSION.setRegistryName(IkisugiEnchant.MODID, "fire_suppression"));
-		r.register(BAD_EFFECT_CLEAR.setRegistryName(IkisugiEnchant.MODID, "bad_effect_clear"));
-		r.register(BENEFICIAL_EFFECT_CLEAR.setRegistryName(IkisugiEnchant.MODID, "beneficial_effect_clear"));
+		if (CommonConfig.isAllEnchantmentEnable.get()) {
+			r.register(SLOWDOWN.setRegistryName(IkisugiEnchant.MODID, "slowdown"));
+			r.register(GLOW.setRegistryName(IkisugiEnchant.MODID, "glow"));
+			r.register(TOXICITY.setRegistryName(IkisugiEnchant.MODID, "toxicity"));
+			r.register(WEAKNESS.setRegistryName(IkisugiEnchant.MODID, "weakness"));
+			r.register(WEAKENING.setRegistryName(IkisugiEnchant.MODID, "weakening"));
+			r.register(FLOATING.setRegistryName(IkisugiEnchant.MODID, "floating"));
+			r.register(TREATMENT.setRegistryName(IkisugiEnchant.MODID, "treatment"));
+			r.register(ILLAGER_KILLER.setRegistryName(IkisugiEnchant.MODID, "illager_killer"));
+			r.register(SHIPMENT.setRegistryName(IkisugiEnchant.MODID, "shipment"));
+			r.register(DISARMAMENT.setRegistryName(IkisugiEnchant.MODID, "disarmament"));
+			r.register(DULLNESS.setRegistryName(IkisugiEnchant.MODID, "dullness"));
+			r.register(NO_DAMAGE.setRegistryName(IkisugiEnchant.MODID, "no_damage"));
+			r.register(FIRE_SUPPRESSION.setRegistryName(IkisugiEnchant.MODID, "fire_suppression"));
+			r.register(BAD_EFFECT_CLEAR.setRegistryName(IkisugiEnchant.MODID, "bad_effect_clear"));
+			r.register(BENEFICIAL_EFFECT_CLEAR.setRegistryName(IkisugiEnchant.MODID, "beneficial_effect_clear"));
+			r.register(EXPLOSION.setRegistryName(IkisugiEnchant.MODID, "explosion"));
+			r.register(IKISUGILK_TOUCH.setRegistryName(IkisugiEnchant.MODID, "ikisugilk_touch"));
 
+		}
 	}
 
 }

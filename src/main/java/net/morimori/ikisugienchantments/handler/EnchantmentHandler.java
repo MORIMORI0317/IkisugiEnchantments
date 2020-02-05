@@ -3,11 +3,13 @@ package net.morimori.ikisugienchantments.handler;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.morimori.ikisugienchantments.enchantment.BaseEnchantment;
@@ -35,6 +37,8 @@ public class EnchantmentHandler {
 
 					((BaseEnchantment) ec).attack(en, e.getEntityLiving(), en.getHeldItemMainhand(),
 							EnchantmentHelper.getEnchantments(en.getHeldItemMainhand()).get(ec), ds);
+
+					((BaseEnchantment) ec).onLivingHurtEvent(e);
 
 				}
 			}
@@ -65,6 +69,24 @@ public class EnchantmentHandler {
 				if (ec instanceof BaseEnchantment) {
 					((BaseEnchantment) ec).handTick(en, en.getHeldItemOffhand(),
 							EnchantmentHelper.getEnchantments(en.getHeldItemOffhand()).get(ec), Hand.OFF_HAND);
+
+				}
+			}
+		}
+
+	}
+
+	@SubscribeEvent
+	public static void onBlockDrop(BlockEvent.BreakEvent e) {
+		PlayerEntity pl = e.getPlayer();
+
+		System.out.println("test");
+		if (!(pl.getHeldItemMainhand().getItem() instanceof EnchantedBookItem)) {
+
+			for (Enchantment ec : EnchantmentHelper.getEnchantments(pl.getHeldItemMainhand()).keySet()) {
+				if (ec instanceof BaseEnchantment) {
+					//		((BaseEnchantment) ec).blockDrop(e, pl, pl.getHeldItemMainhand(),
+					//					EnchantmentHelper.getEnchantments(pl.getHeldItemMainhand()).get(ec), Hand.MAIN_HAND);
 
 				}
 			}

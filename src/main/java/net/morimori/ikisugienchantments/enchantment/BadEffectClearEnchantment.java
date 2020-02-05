@@ -41,6 +41,10 @@ public class BadEffectClearEnchantment extends BaseEnchantment {
 
 	public void attack(LivingEntity attacker, LivingEntity target, ItemStack itemStack, int level,
 			EntityDamageSource source) {
+
+		if (!(source.damageType == "mob" || source.damageType == "player"))
+			return;
+
 		for (EffectInstance e : target.getActivePotionEffects()) {
 
 			if (!e.getPotion().isBeneficial())
