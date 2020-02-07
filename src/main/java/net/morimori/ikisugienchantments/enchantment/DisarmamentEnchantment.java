@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.morimori.ikisugienchantments.config.CommonConfig;
 import net.morimori.ikisugienchantments.util.EntityHelper;
 
 public class DisarmamentEnchantment extends BaseEnchantment {
@@ -20,20 +21,25 @@ public class DisarmamentEnchantment extends BaseEnchantment {
 	}
 
 	public int getMinEnchantability(int enchantmentLevel) {
-		return 20 + (enchantmentLevel - 1) * 10;
+		return CommonConfig.DisarmamentEnchantabilityMin.get()
+				+ (enchantmentLevel - 1) * CommonConfig.DisarmamentEnchantabilityCost.get();
 	}
 
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return super.getMinEnchantability(enchantmentLevel) + 70;
+		return super.getMinEnchantability(enchantmentLevel) + CommonConfig.DisarmamentEnchantabilityCostSpan.get();
 	}
 
 	public boolean isTreasureEnchantment() {
-		return true;
+		return CommonConfig.DisarmamentTreasure.get();
 	}
 
 	@Override
 	public int getMaxLevel() {
-		return 6;
+		return CommonConfig.DisarmamentMaxLevel.get();
+	}
+
+	public boolean isCurse() {
+		return CommonConfig.DisarmamentCurse.get();
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.world.Explosion.Mode;
+import net.morimori.ikisugienchantments.config.CommonConfig;
 
 public class ExplosionEnchantment extends BaseEnchantment {
 	public ExplosionEnchantment(Rarity rarityIn, EquipmentSlotType... slots) {
@@ -14,17 +15,26 @@ public class ExplosionEnchantment extends BaseEnchantment {
 	}
 
 	public int getMinEnchantability(int enchantmentLevel) {
-		return 20 + (enchantmentLevel - 1) * 10;
+		return CommonConfig.ExplosionEnchantabilityMin.get()
+				+ (enchantmentLevel - 1) * CommonConfig.ExplosionEnchantabilityCost.get();
 	}
 
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return super.getMinEnchantability(enchantmentLevel) + 70;
+		return super.getMinEnchantability(enchantmentLevel) + CommonConfig.ExplosionEnchantabilityCostSpan.get();
 	}
 
 	@Override
 	public int getMaxLevel() {
-		return 5;
+		return CommonConfig.ExplosionMaxLevel.get();
 
+	}
+
+	public boolean isTreasureEnchantment() {
+		return CommonConfig.ExplosionTreasure.get();
+	}
+
+	public boolean isCurse() {
+		return CommonConfig.ExplosionCurse.get();
 	}
 
 	@Override

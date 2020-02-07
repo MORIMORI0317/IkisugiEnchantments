@@ -11,6 +11,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
+import net.morimori.ikisugienchantments.config.CommonConfig;
 
 public class ShipmentEnchantment extends BaseEnchantment {
 
@@ -19,11 +20,12 @@ public class ShipmentEnchantment extends BaseEnchantment {
 	}
 
 	public int getMinEnchantability(int enchantmentLevel) {
-		return 5 + (enchantmentLevel - 1) * 8;
+		return CommonConfig.ShipmentEnchantabilityMin.get()
+				+ (enchantmentLevel - 1) * CommonConfig.ShipmentEnchantabilityCost.get();
 	}
 
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return this.getMinEnchantability(enchantmentLevel) + 20;
+		return this.getMinEnchantability(enchantmentLevel) + CommonConfig.ShipmentEnchantabilityCostSpan.get();
 	}
 
 	public boolean canApplyTogether(Enchantment ench) {
@@ -36,7 +38,15 @@ public class ShipmentEnchantment extends BaseEnchantment {
 	}
 
 	public int getMaxLevel() {
-		return 5;
+		return CommonConfig.ShipmentMaxLevel.get();
+	}
+
+	public boolean isCurse() {
+		return CommonConfig.ShipmentCurse.get();
+	}
+
+	public boolean isTreasureEnchantment() {
+		return CommonConfig.ShipmentTreasure.get();
 	}
 
 	@Override

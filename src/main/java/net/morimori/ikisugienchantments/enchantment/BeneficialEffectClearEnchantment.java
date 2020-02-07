@@ -9,6 +9,7 @@ import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.EntityDamageSource;
+import net.morimori.ikisugienchantments.config.CommonConfig;
 
 public class BeneficialEffectClearEnchantment extends BaseEnchantment {
 	public BeneficialEffectClearEnchantment(Rarity rarityIn, EquipmentSlotType... slots) {
@@ -16,15 +17,19 @@ public class BeneficialEffectClearEnchantment extends BaseEnchantment {
 	}
 
 	public int getMinEnchantability(int enchantmentLevel) {
-		return 10 + 20 * (enchantmentLevel - 1);
+		return CommonConfig.BeneficialEffectClearEnchantabilityMin.get();
 	}
 
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return super.getMinEnchantability(enchantmentLevel) + 50;
+		return CommonConfig.BeneficialEffectClearEnchantabilityMax.get();
 	}
 
 	public boolean isTreasureEnchantment() {
-		return true;
+		return CommonConfig.BeneficialEffectClearTreasure.get();
+	}
+
+	public boolean isCurse() {
+		return CommonConfig.BeneficialEffectClearCurse.get();
 	}
 
 	public boolean canApplyTogether(Enchantment ench) {

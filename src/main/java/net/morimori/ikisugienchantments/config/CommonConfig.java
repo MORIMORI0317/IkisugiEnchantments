@@ -63,6 +63,32 @@ public class CommonConfig {
 	public static ConfigValue<Boolean> IllagerKillerTreasure;
 	public static ConfigValue<Boolean> IllagerKillerCurse;
 
+	public static ConfigValue<Integer> ShipmentEnchantabilityMin;
+	public static ConfigValue<Integer> ShipmentEnchantabilityCost;
+	public static ConfigValue<Integer> ShipmentEnchantabilityCostSpan;
+	public static ConfigValue<Integer> ShipmentMaxLevel;
+	public static ConfigValue<Boolean> ShipmentTreasure;
+	public static ConfigValue<Boolean> ShipmentCurse;
+
+	public static ConfigValue<Integer> DisarmamentEnchantabilityMin;
+	public static ConfigValue<Integer> DisarmamentEnchantabilityCost;
+	public static ConfigValue<Integer> DisarmamentEnchantabilityCostSpan;
+	public static ConfigValue<Integer> DisarmamentMaxLevel;
+	public static ConfigValue<Boolean> DisarmamentTreasure;
+	public static ConfigValue<Boolean> DisarmamentCurse;
+
+	public static ConfigValue<Integer> BeneficialEffectClearEnchantabilityMin;
+	public static ConfigValue<Integer> BeneficialEffectClearEnchantabilityMax;
+	public static ConfigValue<Boolean> BeneficialEffectClearTreasure;
+	public static ConfigValue<Boolean> BeneficialEffectClearCurse;
+
+	public static ConfigValue<Integer> ExplosionEnchantabilityMin;
+	public static ConfigValue<Integer> ExplosionEnchantabilityCost;
+	public static ConfigValue<Integer> ExplosionEnchantabilityCostSpan;
+	public static ConfigValue<Integer> ExplosionMaxLevel;
+	public static ConfigValue<Boolean> ExplosionTreasure;
+	public static ConfigValue<Boolean> ExplosionCurse;
+
 	public static void init() {
 		Pair<ConfigLoder, ForgeConfigSpec> common_config = new ForgeConfigSpec.Builder().configure(ConfigLoder::new);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, common_config.getRight());
@@ -133,6 +159,36 @@ public class CommonConfig {
 			IllagerKillerMaxLevel = builder.define("MaxLevel", 5);
 			IllagerKillerTreasure = builder.define("Treasure", false);
 			IllagerKillerCurse = builder.define("Curse", false);
+			builder.pop();
+			builder.push("Shipment Enchantment");
+			ShipmentEnchantabilityMin = builder.define("Enchantability Min", 5);
+			ShipmentEnchantabilityCost = builder.define("Enchantability Cost", 8);
+			ShipmentEnchantabilityCostSpan = builder.define("Enchantability CostSpan", 20);
+			ShipmentMaxLevel = builder.define("MaxLevel", 5);
+			ShipmentTreasure = builder.define("Treasure", false);
+			ShipmentCurse = builder.define("Curse", false);
+			builder.pop();
+			builder.push("Disarmament Enchantment");
+			DisarmamentEnchantabilityMin = builder.define("Enchantability Min", 20);
+			DisarmamentEnchantabilityCost = builder.define("Enchantability Cost", 10);
+			DisarmamentEnchantabilityCostSpan = builder.define("Enchantability CostSpan", 70);
+			DisarmamentMaxLevel = builder.define("MaxLevel", 6);
+			DisarmamentTreasure = builder.define("Treasure", true);
+			DisarmamentCurse = builder.define("Curse", false);
+			builder.pop();
+			builder.push("BeneficialEffectClear Enchantment");
+			BeneficialEffectClearEnchantabilityMin = builder.define("Enchantability Min", 30);
+			BeneficialEffectClearEnchantabilityMax = builder.define("Enchantability Max", 70);
+			BeneficialEffectClearTreasure = builder.define("Treasure", true);
+			BeneficialEffectClearCurse = builder.define("Curse", false);
+			builder.pop();
+			builder.push("Explosion Enchantment");
+			ExplosionEnchantabilityMin = builder.define("Enchantability Min", 20);
+			ExplosionEnchantabilityCost = builder.define("Enchantability Cost", 10);
+			ExplosionEnchantabilityCostSpan = builder.define("Enchantability CostSpan", 70);
+			ExplosionMaxLevel = builder.define("MaxLevel", 5);
+			ExplosionTreasure = builder.define("Treasure", false);
+			ExplosionCurse = builder.define("Curse", false);
 			builder.pop();
 		}
 
